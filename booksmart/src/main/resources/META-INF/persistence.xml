@@ -9,7 +9,7 @@
     <persistence-unit name="booksmart-jpa">
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.GoogleDriver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:google:mysql://symbul-app:symbul/symbul" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:google:mysql://booksmart-app:booksmart/booksmart" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="hibernate.show_sql" value="true" />
@@ -21,7 +21,7 @@
 	<persistence-unit name="booksmart-jpa-dev">
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://173.194.80.216:3306/symbul" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://173.194.86.47:3306/booksmart" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="temp" />
 			<property name="hibernate.show_sql" value="true" />

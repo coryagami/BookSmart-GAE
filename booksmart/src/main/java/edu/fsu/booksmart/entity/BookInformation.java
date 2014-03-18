@@ -1,24 +1,27 @@
 package edu.fsu.booksmart.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "book_information")
+public class BookInformation {
 	
 	@Id
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@GeneratedValue(generator = "increment")
 	private Long id;
 	
-	@OneToOne
-	private UserDevice device;
+	@Column(nullable = false)
+	private String condition;
+	
+	@Column(nullable = false)
+	private String type;
 
 	public Long getId() {
 		return id;
@@ -28,12 +31,20 @@ public class User {
 		this.id = id;
 	}
 
-	public UserDevice getDevice() {
-		return device;
+	public String getCondition() {
+		return condition;
 	}
 
-	public void setDevice(UserDevice device) {
-		this.device = device;
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
