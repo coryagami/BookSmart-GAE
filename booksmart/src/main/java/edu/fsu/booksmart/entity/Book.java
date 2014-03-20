@@ -41,6 +41,9 @@ public class Book {
 	
 	@OneToMany
 	private List<ISBN> isbns;
+	
+	@OneToMany
+	private List<UserPost> posts;
 
 	public Long getId() {
 		return id;
@@ -104,6 +107,14 @@ public class Book {
 
 	public void setIsbns(List<ISBN> isbns) {
 		this.isbns = isbns;
+	}
+
+	public List<UserPost> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<UserPost> posts) {
+		this.posts = posts;
 	}
 	
 }

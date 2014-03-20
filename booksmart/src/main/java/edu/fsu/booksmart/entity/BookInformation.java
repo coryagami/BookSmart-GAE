@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -22,6 +23,9 @@ public class BookInformation {
 	
 	@Column(nullable = false)
 	private String type;
+	
+	@OneToOne
+	private UserPost post;
 
 	public Long getId() {
 		return id;
@@ -45,6 +49,14 @@ public class BookInformation {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public UserPost getPost() {
+		return post;
+	}
+
+	public void setPost(UserPost post) {
+		this.post = post;
 	}
 
 }

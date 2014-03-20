@@ -1,8 +1,11 @@
 package edu.fsu.booksmart.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,6 +22,9 @@ public class User {
 	
 	@OneToOne
 	private UserDevice device;
+	
+	@OneToMany
+	private List<UserPost> posts;
 
 	public Long getId() {
 		return id;
@@ -34,6 +40,14 @@ public class User {
 
 	public void setDevice(UserDevice device) {
 		this.device = device;
+	}
+
+	public List<UserPost> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<UserPost> posts) {
+		this.posts = posts;
 	}
 
 }

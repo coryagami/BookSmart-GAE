@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,19 +30,19 @@ public class UserPost {
 	@Column(nullable = false)
 	private Double price;
 	
-	@OneToOne
+	@ManyToOne
 	private User poster;
 	
-	@OneToOne
+	@ManyToOne
 	private Book book;
 	
 	@OneToOne
 	private BookInformation bookInformation;
 	
-	@OneToOne
+	@ManyToOne
 	private Professor professor;
 	
-	@OneToOne
+	@ManyToOne
 	private FSUClass fsuClass;
 	
 	private Date posted;

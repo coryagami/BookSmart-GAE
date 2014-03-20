@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -25,6 +26,9 @@ public class UserDevice {
 	
 	@Column(name = "operating_system", nullable = false)
 	private String operatingSystem;
+	
+	@OneToOne
+	private User user;
 	
 	public Long getId() {
 		return id;
@@ -56,6 +60,14 @@ public class UserDevice {
 
 	public void setOperatingSystem(String operatingSystem) {
 		this.operatingSystem = operatingSystem;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
