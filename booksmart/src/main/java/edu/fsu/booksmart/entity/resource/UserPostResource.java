@@ -88,7 +88,6 @@ public class UserPostResource {
 		}
 		post.setBook(book);
 		
-		
 		BookInformation information = new BookInformation();
 		information.setCondition(condition);
 		information.setType(type);
@@ -122,6 +121,8 @@ public class UserPostResource {
 		Long time = new java.util.Date().getTime();
 		post.setPosted(new Date(time));
 		post.setExpires(new Date(time + (14 * 24 * 60 * 60) * 1000));
+		
+		
 		return Response.status(Status.CREATED).entity(post).build();
 	}
 	
