@@ -8,10 +8,23 @@ import java.util.Set;
 import edu.fsu.booksmart.entity.User;
 import edu.fsu.booksmart.entity.UserPost;
 
+
+/**
+ * 
+ * This class is used to interact with the database
+ * using the Hibernate library. This is a class that
+ * simply does queries to the database and returns the
+ * results as a simple UserPost or as a set of UserPost.
+ * 
+ * A set is used so that the lists are unique (no duplicates)
+ * 
+ * @author Derek Honerlaw
+ */
+
 public class UserPostEMF extends EMF {
 	
-	public static List<UserPost> getUserPostsByUser(User user) {
-		List<UserPost> posts = new ArrayList<UserPost>();
+	public static Set<UserPost> getUserPostsByUser(User user) {
+		Set<UserPost> posts = new HashSet<UserPost>();
 		return posts;
 	}
 	

@@ -25,6 +25,15 @@ import edu.fsu.booksmart.entity.emf.FSUEMF;
 import edu.fsu.booksmart.entity.emf.UserEMF;
 import edu.fsu.booksmart.entity.emf.UserPostEMF;
 
+/**
+ * 
+ * This class is the "interface" that the mobile application
+ * will interact with when a user wants to add a new book post
+ * or when they want to get a list of book posts.
+ * 
+ * @author Derek Honerlaw
+ */
+
 @Path("/api/user_post")
 @Produces("application/json")
 public class UserPostResource {
