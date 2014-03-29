@@ -10,7 +10,7 @@ public class EMF {
 	
 	private static EntityManagerFactory emf;
 
-	public static EntityManagerFactory get() {
+	public final static EntityManagerFactory get() {
 		if(emf == null || !emf.isOpen()) {
 			if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
 		    	emf = Persistence.createEntityManagerFactory("booksmart-jpa");
@@ -21,7 +21,7 @@ public class EMF {
 		return emf;
 	}
 	
-	public static void persist(Object object) {
+	public final static void persist(Object object) {
 		EntityManager manager = get().createEntityManager();
 		manager.getTransaction().begin();
 		manager.persist(manager.merge(object));
@@ -29,7 +29,7 @@ public class EMF {
 		manager.close();
 	}
 	
-	public static void remove(Object object) {
+	public final static void remove(Object object) {
 		EntityManager manager = get().createEntityManager();
 		manager.getTransaction().begin();
 		manager.remove(object);

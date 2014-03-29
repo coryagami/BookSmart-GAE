@@ -1,13 +1,10 @@
 package edu.fsu.booksmart.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -30,9 +27,6 @@ public class FSUClass {
 	@ManyToOne
 	private Professor professor;
 	
-	@OneToMany
-	private List<UserPost> posts;
-
 	public Long getId() {
 		return id;
 	}
@@ -63,14 +57,6 @@ public class FSUClass {
 
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
-	}
-
-	public List<UserPost> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<UserPost> posts) {
-		this.posts = posts;
 	}
 
 }

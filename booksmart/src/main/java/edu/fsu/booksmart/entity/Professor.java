@@ -31,9 +31,6 @@ public class Professor {
 	
 	@OneToMany
 	private List<FSUClass> classes;
-	
-	@OneToMany
-	private List<UserPost> posts;
 
 	public Long getId() {
 		return id;
@@ -73,14 +70,6 @@ public class Professor {
 
 	public void setClasses(List<FSUClass> classes) {
 		this.classes = classes;
-	}
-
-	public List<UserPost> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<UserPost> posts) {
-		this.posts = posts;
 	}
 
 }

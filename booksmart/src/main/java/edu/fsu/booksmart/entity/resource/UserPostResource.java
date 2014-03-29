@@ -27,32 +27,73 @@ import edu.fsu.booksmart.entity.emf.UserPostEMF;
 
 /**
  * 
+ * UserPostResource Module
+ * 
  * This class is the "interface" that the mobile application
  * will interact with when a user wants to add a new book post
- * or when they want to get a list of book posts.
+ * or when they want to get a list of book posts. This resource
+ * indirectly accesses the database after grabbing parameters and
+ * doing checks are the passed parameters. The database is accessed
+ * using hibernate and the access methods are implemented in UserPostEMF.
  * 
  * @author Derek Honerlaw
+ * @created 3/9/2014
  */
 
 @Path("/api/user_post")
-@Produces("application/json")
+@Produces("application/json") // encode all responses into application/json
 public class UserPostResource {
+	
+	/**
+	 * Retrieves a set of UserPost objects based on the device id
+	 * the posts were made with
+	 * 
+	 * @param device_id The user device id
+	 * @return Set of UserPost objects
+	 */
 	
 	@GET
 	@Path("/user")
 	public Response getPostsByUser(@FormParam("device_id") String device_id) {
-		User user = UserEMF.getUserDeviceById(device_id);
+		User user = UserEMF.getUserByDeviceId(device_id);
 		if(user != null) {
 			return Response.ok(UserPostEMF.getUserPostsByUser(user)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).entity("User not found.").build();
 	}
 	
+	/**
+	 * Retrieves a set of UserPost objects based on the term the user searched for as
+	 * well as the "type" or category that search was in.
+	 * 
+	 * @param type The type of search
+	 * @param term The user search term
+	 * @return Set of UserPost objects
+	 */
+	
 	@GET
 	@Path("/search/{type}")
 	public Response getPostsBySearch(@PathParam("type") String type, @FormParam("term") String term) {
 		return Response.ok(UserPostEMF.getUserPostsByType(type.toLowerCase(), term.toLowerCase())).build();
 	}
+	
+	/**
+	 * Creates a new UserPost objects and submits it into the database
+	 * 
+	 * @param longitude The longitude of where submitted
+	 * @param latitude The latitude of where submitted
+	 * @param price The price they are selling the book for
+	 * @param deviceId The user device id
+	 * @param condition The condition of the book
+	 * @param type The type of book
+	 * @param semester The semester this book is used for
+	 * @param classNumber The class this book is used for
+	 * @param firstName First name of the professor
+	 * @param middleName Middle name of the professor
+	 * @param lastName Last name of the professor
+	 * @param isbn The ISBN number of the book
+	 * @return The created UserPost object
+	 */
 	
 	@POST
 	@Path("/post")
@@ -91,8 +132,6 @@ public class UserPostResource {
 			//		ISBN (List<ISBN>)
 			//			type
 			//			number
-			
-			
 			book = new Book();
 		}
 		post.setBook(book);
